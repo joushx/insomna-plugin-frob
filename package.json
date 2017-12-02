@@ -1,0 +1,11 @@
+{
+  "name": "insomna-plugin-frob",
+  "version": "1.0.0",
+  "main": "plugin.js",
+  "insomnia": {
+    "name": "frob",
+    "description": "Adds frob based authentication"
+  },
+  "dependencies": [],
+  "devDependencies": []
+}
