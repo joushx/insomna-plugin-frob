@@ -1,5 +1,5 @@
 {
-  "name": "insomna-plugin-frob",
+  "name": "insomnia-plugin-frob",
   "version": "1.0.0",
   "main": "plugin.js",
   "insomnia": {
