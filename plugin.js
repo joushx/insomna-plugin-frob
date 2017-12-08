@@ -1,31 +1,31 @@
 var md5 = require('js-md5');
 
-module.exports.templateTags = [{
-  name: 'frob_signature',
-  displayName: 'Frob auth signature',
-  description: 'Gives the api_sig value for this request used in frob based authentication',
-  args: [
-    {
-      type: 'string',
-      displayName: 'Shared Secret'
+module.exports.templateTags = [
+  {
+    name: 'frob_signature',
+    displayName: 'Frob auth signature',
+    description: 'Gives the api_sig value for this request used in frob based authentication',
+    args: [
+      {
+        type: 'string',
+        displayName: 'Shared Secret'
+      }
+    ],
+    async run (context, shared_secret) {
+      const {meta} = context;
+      if (!meta.requestId || !meta.workspaceId) {
+        return null;
+      }
+
+      // get current request
+      const request = await context.util.models.request.getById(meta.requestId);
+      if (!request) {
+        throw new Error(`Request not found for ${meta.requestId}`);
+      }
+
+      return createSignature(context, request, shared_secret);
     }
-	],
- async run (context, shared_secret) {
-   const {meta} = context;
-
-    if (!meta.requestId || !meta.workspaceId) {
-      return null;
-    }
-
-   // get current request
-   const request = await context.util.models.request.getById(meta.requestId);
-
-   if (!request) {
-      throw new Error(`Request not found for ${meta.requestId}`);
-   }
-
-   return createSignature(context, request, shared_secret);
- }}
+  }
 ];
 
 async function getParameters(context, request){

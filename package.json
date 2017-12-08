@@ -1,11 +1,19 @@
 {
   "name": "insomna-plugin-frob",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "plugin.js",
-  "insomnia": {
-    "name": "frob",
-    "description": "Adds frob based authentication"
+  "license": "MIT",
+  "description": "A template tag for the api_sig parameter in frob based authentication",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joushx/insomna-plugin-frob.git"
   },
-  "dependencies": [],
-  "devDependencies": []
+  "insomnia": {
+    "name": "frob auth",
+    "description": "A template tag for the api_sig parameter in frob based authentication"
+  },
+  "dependencies": {
+    "js-md5": "^0.7.2"
+  },
+  "devDependencies": {}
 }
